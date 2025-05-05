@@ -1,4 +1,4 @@
 #pragma once
-// comment
+// comment 2
 int version();
 
