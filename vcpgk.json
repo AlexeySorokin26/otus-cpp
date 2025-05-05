@@ -1,0 +1,10 @@
+{
+  "name": "helloworld",
+  "version": "0.0.1",
+  "dependencies": [
+    "boost"
+  ],
+  "features": {
+    "default": ["unit-test-framework"]
+  }
+}
