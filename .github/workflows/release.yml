@@ -24,7 +24,7 @@ jobs:
         run: ./vcpkg/bootstrap-vcpkg.sh
 
       - name: Install dependencies with vcpkg
-        run: ./vcpkg/vcpkg install boost
+        run: ./vcpkg/vcpkg install boost-test
 
       - name: Configure CMake
         run: >
