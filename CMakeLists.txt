@@ -31,7 +31,6 @@ if(WITH_BOOST_TEST)
     message(STATUS "Boost include directory: ${Boost_INCLUDE_DIRS}")
 
     add_executable(test_version test_version.cpp)
-    target_compile_definitions(test_version PRIVATE BOOST_TEST_DYN_LINK)
     target_link_libraries(test_version
         PRIVATE
             helloworld
