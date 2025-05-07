@@ -7,6 +7,7 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.c
 project(helloworld VERSION ${PROJECT_VESRION})
 
 option(WITH_BOOST_TEST "Whether to build Boost test" ON)
+option(WITH_Google_benchmark "Whether to build Google benchmark test" ON)
 
 configure_file(version.h.in version.h)
 
@@ -38,6 +39,16 @@ if(WITH_BOOST_TEST)
     )
 endif()
 
+if(WITH_Google_benchmark)
+    find_package(benchmark REQUIRED)
+
+    add_executable(benchmark_example benchmark_example.cpp)
+    target_link_libraries(benchmark_example
+        PRIVATE
+            benchmark::benchmark
+            helloworld  
+    )
+endif()
 
 if (MSVC)
     target_compile_options(helloworld_cli PRIVATE
