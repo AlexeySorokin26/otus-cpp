@@ -6,6 +6,8 @@
 
 std::vector<std::string> split(const std::string& str, char d);
 
-void getSplitedVector(std::vector<std::vector<std::string>>& data);
+std::vector<std::vector<std::string>> getFirstPartOfSplitedVector(const std::string& fileName);
 
 void print(const std::vector<std::vector<std::string>>& data);
+
+void reverseLexSort(std::vector<std::vector<std::string>>& data);

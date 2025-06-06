@@ -3,11 +3,9 @@
 
 int main(int argc, char const* argv[]) {
 	try {
-		std::vector<std::vector<std::string>> ip_pool;
-		getSplitedVector(ip_pool);
-
-		//// TODO reverse lexicographically sort
-
+		const std::string fileName = "ip_filter.tsv"; // we should get copy of this file in build folder from cmake
+		auto ip_pool = getFirstPartOfSplitedVector(fileName);
+		reverseLexSort(ip_pool);
 		print(ip_pool);
 
 		// 222.173.235.246

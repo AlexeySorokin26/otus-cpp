@@ -1,5 +1,7 @@
 #include "ip_filter.h"
 
+#include <fstream>
+
 std::vector<std::string> split(const std::string& str, char d) {
 	std::vector<std::string> r;
 
@@ -17,11 +19,20 @@ std::vector<std::string> split(const std::string& str, char d) {
 	return r;
 }
 
-void getSplitedVector(std::vector<std::vector<std::string>>& data) {
-	for (std::string line; std::getline(std::cin, line);) {
+std::vector<std::vector<std::string>> getFirstPartOfSplitedVector(const std::string& fileName) {
+	std::fstream file(fileName);
+	if (!file.is_open()) {
+		throw std::runtime_error("Could not open file: " + fileName);
+	}
+
+	std::vector<std::vector<std::string>> data;
+	std::string line;
+	while (std::getline(file, line)) {
 		std::vector<std::string> v = split(line, '\t');
 		data.push_back(split(v.at(0), '.'));
 	}
+
+	return data;
 }
 
 void print(const std::vector<std::vector<std::string>>& data) {
@@ -36,4 +47,7 @@ void print(const std::vector<std::vector<std::string>>& data) {
 	}
 }
 
+void reverseLexSort(std::vector<std::vector<std::string>>& data) {
+
+}
 

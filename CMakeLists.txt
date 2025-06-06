@@ -15,6 +15,13 @@ set_target_properties(${PROJECT_NAME} ip_filter_lib PROPERTIES
     CXX_STANDARD_REQUIRED ON
 )
 
+# copy data file to build folder
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/ip_filter.tsv"
+    "${CMAKE_CURRENT_BINARY_DIR}/ip_filter.tsv"
+    COPYONLY
+)
+
 if(WITH_BOOST_TEST)
     find_package(Boost REQUIRED COMPONENTS unit_test_framework)
     message(STATUS "Boost include directory: ${Boost_INCLUDE_DIRS}")
