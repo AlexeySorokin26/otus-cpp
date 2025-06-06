@@ -10,7 +10,7 @@ project(homework2
     LANGUAGES CXX
 )
 
-option(WITH_BOOST_TEST "Build with Boost.Test support" OFF)
+option(WITH_BOOST_TEST "Build with Boost.Test support" ON)
 option(WITH_Google_benchmark "Build with Google Benchmark support" OFF)
 
 add_library(ip_filter_lib 
