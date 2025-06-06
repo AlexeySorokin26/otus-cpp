@@ -50,10 +50,18 @@ void print(const std::vector<std::vector<std::string>>& data) {
 
 void reverseLexSort(std::vector<std::vector<std::string>>& data) {
 	std::sort(data.begin(), data.end(),
-		[](const std::vector<std::string>& f, const std::vector<std::string>& s) {
-			bool check = stod(f[0]) > stod(s[0]);
-			return check;
+		[](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+			for (int i = 0; i < 4; ++i) {
+				int octet_a = std::stoi(a[i]);
+				int octet_b = std::stoi(b[i]);
+
+				if (octet_a != octet_b) {
+					return octet_a > octet_b;  
+				}
+			}
+			return false;  
 		}
 	);
 }
+
 
