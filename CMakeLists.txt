@@ -47,4 +47,10 @@ endif()
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
+
+if(WITH_BOOST_TEST)
+    enable_testing()
+    add_test(ip_filter_test ip_filter_test)
+endif()
