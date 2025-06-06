@@ -1,6 +1,7 @@
 #include "ip_filter.h"
 
 #include <fstream>
+#include <algorithm>
 
 std::vector<std::string> split(const std::string& str, char d) {
 	std::vector<std::string> r;
@@ -48,6 +49,6 @@ void print(const std::vector<std::vector<std::string>>& data) {
 }
 
 void reverseLexSort(std::vector<std::vector<std::string>>& data) {
-
+	//std::sort(data.back(), data.end());
 }
 
