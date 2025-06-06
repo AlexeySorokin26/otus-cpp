@@ -49,6 +49,10 @@ void print(const std::vector<std::vector<std::string>>& data) {
 }
 
 void reverseLexSort(std::vector<std::vector<std::string>>& data) {
-	//std::sort(data.back(), data.end());
+	/*std::sort(data.begin(), data.end(),
+		[](const std::vector<std::string> f, const std::vector<std::string> s) {
+			return f[0] < f[1];
+		}
+	);*/
 }
 

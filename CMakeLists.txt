@@ -44,3 +44,7 @@ if(WITH_Google_benchmark)
             helloworld  
     )
 endif()
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+set(CPACK_GENERATOR DEB)
+include(CPack)
