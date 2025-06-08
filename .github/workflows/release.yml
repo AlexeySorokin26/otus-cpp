@@ -6,7 +6,7 @@ on:
       - master
       - homework2
       - feature/github_actions
-
+      - homework3Allocator
 jobs:
   build:
     runs-on: ubuntu-latest
