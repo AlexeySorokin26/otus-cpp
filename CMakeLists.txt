@@ -4,18 +4,18 @@ set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
-project(homework2 
+project(homework_own_allocator 
     VERSION ${PROJECT_VESRION}
-    DESCRIPTION "IP Filter Application"
+    DESCRIPTION "Own allocator"
     LANGUAGES CXX
 )
 
 option(WITH_BOOST_TEST "Build with Boost.Test support" ON)
 option(WITH_Google_benchmark "Build with Google Benchmark support" OFF)
 
-add_library(ip_filter_lib 
-    ip_filter.cpp 
-    ip_filter.h
+add_library(own_allocator_lib 
+    own_allocator.cpp 
+    own_allocator.h
 )
 
 add_executable(${PROJECT_NAME} 
@@ -24,36 +24,30 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE 
-        ip_filter_lib
+        own_allocator_lib
 )
 
-set_target_properties(${PROJECT_NAME} ip_filter_lib PROPERTIES
+set_target_properties(${PROJECT_NAME} own_allocator_lib PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF
 )
 
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/ip_filter.tsv"
-    "${CMAKE_CURRENT_BINARY_DIR}/ip_filter.tsv"
-    COPYONLY
-)
-
 if(WITH_BOOST_TEST)
     find_package(Boost REQUIRED COMPONENTS unit_test_framework)
     
-    add_executable(ip_filter_test 
-        ip_filter_test.cpp
+    add_executable(own_allocator_test 
+        own_allocator_test.cpp
     )
     
-    target_link_libraries(ip_filter_test
+    target_link_libraries(own_allocator_test
         PRIVATE
-            ip_filter_lib
+            own_allocator_lib
             Boost::unit_test_framework
     )
     
     enable_testing()
-    add_test(NAME ip_filter_test COMMAND ip_filter_test)
+    add_test(NAME own_allocator_test COMMAND own_allocator_test)
 endif()
 
 if(WITH_Google_benchmark)
@@ -66,7 +60,7 @@ if(WITH_Google_benchmark)
     target_link_libraries(benchmark_example
         PRIVATE
             benchmark::benchmark
-            ip_filter_lib
+            own_allocator_lib
     )
 endif()
 

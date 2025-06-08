@@ -1,12 +1,20 @@
 
-#include "ip_filter.h"
+#include "own_allocator.h"
+
+#include <exception>
+#include <iostream>
+#include <vector>
 
 int main(int argc, char const* argv[]) {
 	try {
-		const std::string fileName = "ip_filter.tsv"; // we should get copy of this file in build folder from cmake
-		auto ip_pool = getFirstPartOfSplitedVector(fileName);
-		reverseLexSort(ip_pool);
-		print(ip_pool);
+		const int count = 100;
+		pool_allocator<TestData> pool(count);
+		std::vector<TestData*> data;
+		for (int i = 0; i < count; ++i) {
+			TestData* obj = pool.get_next();
+			new(obj) TestData(i, i + 1);
+			data.push_back(obj);
+		}
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
