@@ -7,6 +7,7 @@ on:
       - homework2
       - feature/github_actions
       - homework3Allocator
+      - homework4templates
 jobs:
   build:
     runs-on: ubuntu-latest
